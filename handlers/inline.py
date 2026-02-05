@@ -8,6 +8,14 @@ voice_service: VoiceService = VoiceService()
 
 @router.inline_query()
 async def inline_handler(query: InlineQuery):
+    """
+    Handle inline queries for voice selection.
+
+    Fetches matching voices via VoiceService and returns cached voice results.
+
+    :param query: The incoming inline query object.
+    :type query: InlineQuery
+    """
     found_voices = voice_service(query.query) 
 
     results = []
