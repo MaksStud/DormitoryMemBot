@@ -6,7 +6,6 @@ from handlers.inline import router as inline_router
 from handlers.get_voice import router as voice_router
 
 logging.basicConfig(level=logging.DEBUG)
-
 logger = logging.getLogger(__name__)
 
 bot = Bot(token=settings.BOT_SECRET_KEY)
