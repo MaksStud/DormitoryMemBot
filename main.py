@@ -11,16 +11,26 @@ logger = logging.getLogger(__name__)
 bot = Bot(token=settings.BOT_SECRET_KEY)
 
 
-async def main():
+async def main() -> None:
+    """
+    Entry point for the bot.
+
+    Initializes routers and starts long-polling.
+    """
     dp = Dispatcher()
     dp.include_router(inline_router)
     dp.include_router(voice_router)
 
-    logger.info("The bot is up and running and ready to send voice messages!")
+    logger.info("The bot is up and running!")
 
     await dp.start_polling(bot, drop_pending_updates=True)
 
 if __name__ == '__main__':
+    """
+    Script execution.
+
+    Runs the main loop and handles KeyboardInterrupt.
+    """
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
